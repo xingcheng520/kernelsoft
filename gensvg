@@ -1,0 +1,7 @@
+cat $1 | awk '{if (substr($1,1,1) == "#") {print substr($0, 3)}}' | c++filt | /bin/flame-graph/stackcollapse.pl | /bin/flame-graph/flamegraph.pl >$2
+
+if [ $? -eq 0 ];then
+	echo "0"
+else
+	echo "1"
+fi	
